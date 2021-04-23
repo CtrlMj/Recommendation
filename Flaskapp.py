@@ -35,8 +35,8 @@ def predict():
     laptop_name = request.args.get("laptopName")
     id = df[ df['laptop_name'] == laptop_name ].index[0]
     similar_ids = similarity_mtrx[id, 1:4]
-    similars = [df.loc[i, 'brand'] + ' ' + df.loc[i, 'laptop_name'] for i in similar_ids]
-    return ' - '.join(similars)
+    #similars = [df.loc[i, 'brand'] + ' ' + df.loc[i, 'laptop_name'] for i in similar_ids]
+    return df.iloc[similar_ids]
 
 
 if __name__ == "__main__":

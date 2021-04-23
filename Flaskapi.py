@@ -19,7 +19,7 @@ def predict():
     id = df[ df['laptop_name'] == laptop_name ].index[0]
     try:
         similar_ids = similarity_mtrx[id, 1:4]
-        similars = [df.loc[i, 'brand'] + ' ' + df.loc[i, 'laptop_name'] for i in similar_ids]
-        return jsonify(similars), 200
+        #similars = [df.loc[i, 'brand'] + ' ' + df.loc[i, 'laptop_name'] for i in similar_ids]
+        return jsonify(df.iloc[similar_ids]), 200
     except Exception as e:
         return jsonify(str(e)), 500
